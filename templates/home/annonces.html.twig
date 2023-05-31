@@ -1,0 +1,54 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello HomeController!{% endblock %}
+
+
+{% block body %}
+
+<!-- {{dump(rides)}} -->
+
+<div class="rideCards">
+    {% for ride in rides %}
+    <div class="ridesContainer">
+        <div class="rides">
+
+            <p class="rideDepartureDestination">{{ride.departure}} <svg class="my-arrow"
+                    xmlns="http://www.w3.org/2000/svg" viewBox="0 0 50 50">
+                    <path d="M10 25L40 25M40 25L30 15M40 25L30 35" />
+                </svg>
+                {{ride.destination}}</p>
+
+            <p class="rideSeats">Nombre de place disponibles : <span>{{ride.seats}}</span></p>
+
+            <p class="ridePrice">Prix de la course : <span>{{ride.price}} €</span></p>
+
+            <p class="rideDate">Trajet prévu le : <span>{{ride.date|date('d-m-Y à H:i:s')}}</span></p>
+
+            <p class="rideCreated">Trajet créée le : <span>{{ride.created|date('d-m-Y à H:i:s')}}</span></p>
+
+            {% for rule in ride.rules %}
+            <p class="rideRule">Règle : <span>{{rule.name}}</span></p>
+            {% endfor %}
+
+            <a class="reserver" href="#">RESERVER</a>
+
+        </div>
+    </div>
+    {% endfor %}
+</div>
+<!-- <style>
+    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
+    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
+</style>
+
+<div class="example-wrapper">
+    <h1>Hello {{ controller_name }}! ✅</h1>
+
+    This friendly message is coming from:
+    <ul>
+        <li>Your controller at <code><a href="{{ '/home/guillaume/WORKS/07_blablaChamb/blablaChamb/src/Controller/HomeController.php'|file_link(0) }}">src/Controller/HomeController.php</a></code></li>
+        <li>Your template at <code><a href="{{ '/home/guillaume/WORKS/07_blablaChamb/blablaChamb/templates/home/index.html.twig'|file_link(0) }}">templates/home/index.html.twig</a></code></li>
+    </ul>
+</div> -->
+
+{% endblock %}
