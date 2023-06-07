@@ -1,0 +1,69 @@
+.userEdit {
+    margin: 15px auto;
+    width: 300px;
+    gap: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid #efefef;
+    padding: 40px;
+    background-color: #efefef55;
+    border-radius: 8px;
+    box-shadow: 0px 0px 20px #00000055;
+    transition: 0.4s;
+    backdrop-filter: blur(20px);
+
+    @media (max-width: 700px) {
+        .detailAnnonce {
+            margin: 30px 20px;
+        }
+    }
+
+    .containerTitleEdit {
+        font-size: 18px;
+        font-family: sans-serif;
+        font-weight: 700;
+        color: #0085FF;
+    }
+
+    .formUserEdit {
+        display: flex;
+        flex-direction: column;
+
+        & input {
+            margin-bottom: 15px;
+            width: 270px;
+        }
+
+        & label {
+            color: #0085FF;
+            margin: 10px 10px 0px 0px;
+            font-family: sans-serif;
+            font-weight: 600;
+            font-size: 14px;
+        }
+    }
+
+    .btnEditUser {
+        margin-top: 20px;
+        color: #0085FF;
+        padding: 10px;
+        font-family: sans-serif;
+        font-weight: 600;
+        font-size: 14px;
+        text-decoration: none;
+        transition: 0.3s;
+        border: 1px solid #0085FF;
+        border-radius: 4px;
+        cursor: pointer;
+
+        &:hover {
+            color: white;
+            background-color: #0085FF;
+        }
+    }
+
+
+
+}

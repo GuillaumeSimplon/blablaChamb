@@ -1,0 +1,108 @@
+.userProfile {
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    margin-top: 20px;
+
+    .columnLeft,
+    .columnRight {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .userDetails,
+    .vehicleProfile,
+    .ruleProfile,
+    .createAd,
+    .yourAds,
+    .yourReservations {
+        margin: 15px auto;
+        width: 300px;
+        gap: 5px;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
+        align-items: start;
+        border: 1px solid #efefef;
+        padding: 40px;
+        background-color: #efefef55;
+        border-radius: 8px;
+        box-shadow: 0px 0px 20px #00000055;
+        transition: 0.4s;
+        backdrop-filter: blur(20px);
+
+        @media (max-width: 700px) {
+            .detailAnnonce {
+                margin: 30px 20px;
+            }
+        }
+
+        .containerTitle {
+            font-size: 18px;
+            font-family: sans-serif;
+            font-weight: 700;
+            color: #0085FF;
+        }
+    }
+
+    p {
+        font-size: 15px;
+        font-family: sans-serif;
+        font-weight: 200;
+        margin-bottom: 5px;
+
+        span {
+            font-weight: 800;
+        }
+    }
+
+    .btnUserProfile {
+        margin-top: 20px;
+        color: #0085FF;
+        padding: 10px;
+        font-family: sans-serif;
+        font-weight: 600;
+        font-size: 14px;
+        text-decoration: none;
+        transition: 0.3s;
+        border: 1px solid #0085FF;
+        border-radius: 4px;
+
+        &:hover {
+            color: white;
+            background-color: #0085FF;
+        }
+    }
+
+    .bntCreateAd {
+        margin: 0 auto;
+        color: white;
+        background-color: #0085FF;
+        padding: 10px 30px;
+        font-family: sans-serif;
+        font-weight: 600;
+        font-size: 14px;
+        text-decoration: none;
+        transition: 0.3s;
+        border: 1px solid #0085FF;
+        border-radius: 4px;
+
+        &:hover {
+            color: #0085FF;
+            background-color: white;
+        }
+    }
+
+    .inputRadio {
+        font-family: sans-serif;
+        font-weight: 600;
+        font-size: 14px;
+        margin-bottom: 10px;
+
+        span {
+            font-weight: 900;
+        }
+    }
+
+}

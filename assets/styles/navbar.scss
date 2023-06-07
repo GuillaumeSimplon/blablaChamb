@@ -6,14 +6,25 @@ header {
     display: flex;
     align-items: center;
     justify-content: space-around;
+    flex-wrap: wrap;
+
+
+    @media (max-width: 593px) {
+        height: 160px;
+    }
 
     #logo {
         color: #0085FF;
         font-family: sans-serif;
         font-weight: 800;
-        font-size: 24px;
+        font-size: 20px;
         cursor: pointer;
         text-decoration: none;
+
+        &:hover{
+            -webkit-text-fill-color: transparent;
+            -webkit-text-stroke-width: 1px;
+        }
     }
 
     ul {
@@ -25,7 +36,7 @@ header {
             padding: 13px;
             font-family: sans-serif;
             font-weight: 600;
-            font-size: 13px;
+            font-size: 12px;
             text-decoration: none;
             transition: 0.3s;
         }
@@ -52,10 +63,10 @@ header {
 
     .userButton {
         color: #0085FF;
-        padding: 15px;
+        padding: 10px;
         font-family: sans-serif;
         font-weight: 400;
-        font-size: 13px;
+        font-size: 12px;
         text-decoration: none;
         transition: 0.3s;
         border: 1px solid #0085FF;

@@ -3,12 +3,33 @@
 {% block title %}Register{% endblock %}
 
 {% block body %}
+
+<div class="ballContainer">
+    <div id="blueBall"></div>
+    <div id="blueLightBall"></div>
+    <div id="smallBall"></div>
+</div>
+
+
 <div class="inscription">
-    <h1>S'inscrire</h1>
+    <div class="inscriptionTitle">
+        <h1 id="inscription2">Inscription</h1>
+        <h1 id="inscription1">Inscription</h1>
+    </div>
 
     <div class="registrationForm">{{ form_start(registrationForm) }}
 
-        <div class="registrationEmail">{{ form_row(registrationForm.email) }}</div>
+
+
+        <div class="registrationEmail">
+            {{ form_label(registrationForm.email) }}
+            {{ form_widget(registrationForm.email) }}
+            {{ form_errors(registrationForm.email) }}
+            {{ form_help(registrationForm.email) }}
+        </div>
+
+
+
 
         <div class="registrationPassword">{{ form_row(registrationForm.plainPassword, {
             label: 'Password'
@@ -21,8 +42,8 @@
 
         <div class="registrationPhone">{{ form_row(registrationForm.phone)}}</div>
 
-        
-        <div class=" registrationAgreeTerms">{{ form_row(registrationForm.agreeTerms) }}</div>
+
+        <div class=" registrationAgreeTerms"><p>Vous consentez aux cookies si vous créez un compte blablaChamb</p><div id="line"></div>{{ form_row(registrationForm.agreeTerms) }}</div>
 
         <button class="registrationSubmit" type="submit" class="btn">Register</button>
 

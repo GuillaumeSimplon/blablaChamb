@@ -2,21 +2,23 @@
 <div class="logo"><a id="logo" href="{{path('app_home')}}">blablaChamb</a></div>
 
 <ul id="menu">
-    <li><a class="activ" href="{{ path('app_covoiturage')}}">COVOITURAGE</a></li>
-    <li><a class="activ" href="{{ path('app_annonces') }}">ANNONCES</a></li>
+    <li><a class="activ" href="{{ path('app_covoiturage')}}">CARPOOLING</a></li>
+    <li><a class="activ" href="{{ path('app_annonces') }}">ADS</a></li>
 
     <!-- <li><a href="#">ANNONCES</a></li> -->
-    <li><a class="activ" href="#">PUBLIER UN TRAJET</a></li>
+    <!-- <li><a class="activ" href="{{path('app_profil')}}">PROFILE</a></li> -->
+    <li><a class="activ" href="{{path('app_profil')}}"><i class="fas fa-user"></i></a></li>
+
 </ul>
 
 <ul id="usermenu">
 
 {% if not app.user%}
-<li><a class="userButton" href="{{path('app_login')}}">CONNEXION</a></li>
-<li><a class="userButton" href="{{path('app_register')}}">S'INSCRIRE</a></li>
+<li><a class="userButton" href="{{path('app_login')}}">CONNECTION</a></li>
+<li><a class="userButton" href="{{path('app_register')}}">REGISTER</a></li>
 {%endif%}
 
 {% if app.user%}
-<li><a class="userButton" href="{{path('app_logout')}}">DECONNEXION</a></li>
+<li><a class="userButton" href="{{path('app_logout')}}">DISCONNECTION</a></li>
 {%endif%}
 </ul>

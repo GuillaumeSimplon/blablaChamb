@@ -1,0 +1,61 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello HomeController!{% endblock %}
+
+
+
+
+{% block body %}
+
+<div class="ballContainer">
+    <div id="blueBall"></div>
+    <div id="blueLightBall"></div>
+    <div id="smallBall"></div>
+</div>
+
+
+<div class="detailAnnonce">
+
+
+    <p class="rideDepartureDestination">{{ride.departure}}
+
+        <svg class="my-arrow" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 50 50">
+            <path d="M10 25L40 25M40 25L30 15M40 25L30 35" />
+        </svg>
+
+        {{ride.destination}}
+    </p>
+
+    <p class="rideSeats">Nombre de place disponibles : <span>{{ride.seats}}</span></p>
+
+    <p class="ridePrice">Prix de la course : <span>{{ride.price}} €</span></p>
+
+    <p class="rideDate">Trajet prévu le : <span>{{ride.date|date('d-m-Y à H:i:s')}}</span></p>
+
+    <p class="rideCreated">Trajet créée le : <span>{{ride.created|date('d-m-Y à H:i:s')}}</span></p>
+
+    <div class="regle">
+        <p class="subTitle">REGLES :</p>
+        {% for rule in ride.rules %}
+        <p class="rideRule">Règle : <span>{{rule.name}}</span></p>
+        {% endfor %}
+    </div>
+
+    {% if car is not null %}
+    <div class="car">
+        <p class="subTitle">CAR :</p>
+        <p class="carBrand">Marque : <span>{{car.brand}}</span></p>
+        <p class="carModel">Model : <span>{{car.model}}</span></p>
+        <p class="carSeats">Nombre de place : <span>{{car.seats}}</span></p>
+    </div>
+    {% endif %}
+
+    <a class="reserver" href="{{ path('app_reservation')}}">RESERVER</a>
+
+
+</div>
+
+
+
+
+{% endblock %}

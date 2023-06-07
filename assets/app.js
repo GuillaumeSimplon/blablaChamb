@@ -8,6 +8,11 @@
 // any CSS you import will output into a single css file (app.css in this case)
 import './styles/app.scss';
 import './styles/navbar.scss';
+import './styles/annonceCards.scss';
+import './styles/annonceDetail.scss';
+import './styles/registerLogin.scss';
+import './styles/profil.scss';
+import './styles/edit.scss';
 
 // start the Stimulus application
 import './bootstrap';

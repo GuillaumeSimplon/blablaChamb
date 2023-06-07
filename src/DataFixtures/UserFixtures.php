@@ -12,15 +12,15 @@ class UserFixtures extends AbstractFixtures
     public function load(ObjectManager $manager): void
     {
         $adminUser = new User();
-        $adminUser->setEmail('simplon@test.fr');
+        $adminUser->setEmail('janolapin@gmail.com');
         $adminUser->setRoles(["USER"]);
-        $adminUser->setPhone('012345678');
+        $adminUser->setPhone('0123456789');
         $adminUser->setPassword($this->passwordHasher->hashPassword($adminUser, '123456'));
         
         $adminUser->setCreated(new \DateTime());
 
-        $adminUser->setFirstName('blabla');
-        $adminUser->setLastName('bloubloublou');
+        $adminUser->setFirstName('Jano');
+        $adminUser->setLastName('Lapin');
 
         $manager->persist($adminUser);
 

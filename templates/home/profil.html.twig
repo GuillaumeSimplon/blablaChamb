@@ -1,0 +1,109 @@
+{% extends 'base.html.twig' %}
+
+
+{% block body %}
+<div class="ballContainer">
+    <div id="blueBall"></div>
+    <div id="blueLightBall"></div>
+    <div id="smallBall"></div>
+</div>
+
+
+
+
+<div class="userProfile">
+
+    <div class="columnLeft">
+        <div class="userDetails">
+            <p class="containerTitle">PROFIL UTILISATEUR</p>
+
+            <p class="createdProfile">Profil créé le : <span>{{user.created|date('d-m-Y à H:i:s')}}</span></p>
+            <p class="userFirstName">Nom complet : <span>{{user.firstname}} {{user.lastname}}</span></p>
+            <p class="userEmail">Email : <span>{{user.email}}</span></p>
+            <p class="userPassword">Password : ******</p>
+            <p class="userPhone">Tél : <span>{{user.phone}}</span></p>
+
+            <a class="btnUserProfile" href="{{ path('app_profil_edit') }}">Modifier votre profil</a>
+        </div>
+
+
+
+        <div class="vehicleProfile">
+            <p class="containerTitle">VÉHICULE</p>
+
+            <p class="brand">Marque : <span>{{car.brand}}</span></p>
+            <p class="model">Modèle : <span>{{car.model}}</span></p>
+            <p class="seats">Nombre de places : <span>{{car.seats}}</span></p>
+            <!-- <select name="seats">
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
+                <option value="6">6</option>
+                <option value="7">7</option>
+            </select> -->
+
+            <a class="btnUserProfile" href="{{ path('app_profil_editCar') }}">Modifier votre véhicule</a>
+        </div>
+
+
+
+        <div class="createAd">
+            <a class="bntCreateAd" href="#">Créer une annonce</a>
+        </div>
+    </div>
+
+
+
+
+
+
+
+    <div class="columnRight">
+        <div class="ruleProfile">
+            <p class="containerTitle">RÈGLES</p>
+
+            <div class="inputRadio">
+                <p>Fumeurs acceptés : </p>
+                <input type="radio" name="fumeurs" value="oui"> <span>Oui</span>
+                <input type="radio" name="fumeurs" value="non"> <span>Non</span>
+            </div>
+            <div class="inputRadio">
+                <p>Animaux de compagnie acceptés :</p>
+                <input type="radio" name="animaux" value="oui"> Oui
+                <input type="radio" name="animaux" value="non"> Non
+            </div>
+
+            <p><span>Respect des horaires</span></p>
+            <p>Se réserve le droit de partir après :</p>
+            <select name="retard">
+                <option value="0">Aucun retard accepté</option>
+                <option value="5">5 minutes de retard</option>
+                <option value="10">10 minutes de retard</option>
+                <option value="15">15 minutes de retard</option>
+                <option value="20">20 minutes de retard</option>
+                <option value="25">25 minutes de retard</option>
+                <option value="30">30 minutes de retard</option>
+            </select>
+
+            <p>Autre règle : <span>{{rule.name}} : {{rule.description}}</span></p>
+            <!-- <textarea name="userText" rows="2" cols="20" placeholder="Écrivez votre texte ici"></textarea> -->
+
+            <a class="btnUserProfile" href="#">Modifier vos règles</a>
+        </div>
+
+
+
+        <div class="yourAds">
+            <p class="containerTitle">VOS ANNONCES</p>
+        </div>
+
+
+
+        <div class="yourReservations">
+            <p class="containerTitle">VOS RESERVATIONS</p>
+        </div>
+    </div>
+
+</div>
+{% endblock %}

@@ -26,6 +26,7 @@ class RideFixtures extends AbstractFixtures implements DependentFixtureInterface
                 $userReference = $this->getReference('user_' . $i);
                 $ride->setDriver($userReference);
 
+                $ride->setCar($this->getReference("car_" . $this->faker->numberBetween(0, 10)));
 
                 // Table intermediaire ride_rule
                 $this->setReference('ride_' . $i, $ride);

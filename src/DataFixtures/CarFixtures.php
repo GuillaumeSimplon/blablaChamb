@@ -23,6 +23,9 @@ class CarFixtures extends AbstractFixtures implements DependentFixtureInterface
             $userReference = $this->getReference('user_' . $i);
             $car->setOwner($userReference);
 
+            $this->setReference("car_" . $i, $car);
+
+
             // Enregistre le produit fraîchement créé, à faire à chaque tour de boucle
             $manager->persist($car);
         }
