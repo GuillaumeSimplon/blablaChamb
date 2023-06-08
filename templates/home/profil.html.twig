@@ -31,6 +31,7 @@
         <div class="vehicleProfile">
             <p class="containerTitle">VÉHICULE</p>
 
+            {% if car %}
             <p class="brand">Marque : <span>{{car.brand}}</span></p>
             <p class="model">Modèle : <span>{{car.model}}</span></p>
             <p class="seats">Nombre de places : <span>{{car.seats}}</span></p>
@@ -42,14 +43,14 @@
                 <option value="6">6</option>
                 <option value="7">7</option>
             </select> -->
-
+            {% endif %}
             <a class="btnUserProfile" href="{{ path('app_profil_editCar') }}">Modifier votre véhicule</a>
         </div>
 
 
 
         <div class="createAd">
-            <a class="bntCreateAd" href="#">Créer une annonce</a>
+            <a class="bntCreateAd" href="{{path('app_createAnnonce')}}">Créer une annonce</a>
         </div>
     </div>
 
@@ -74,6 +75,7 @@
                 <input type="radio" name="animaux" value="non"> Non
             </div>
 
+
             <p><span>Respect des horaires</span></p>
             <p>Se réserve le droit de partir après :</p>
             <select name="retard">
@@ -86,10 +88,13 @@
                 <option value="30">30 minutes de retard</option>
             </select>
 
-            <p>Autre règle : <span>{{rule.name}} : {{rule.description}}</span></p>
+            {% if rule %}
+            <p>Autre règle : <span>{{rule.name}}</span></p>
+            <p>• {{rule.description}}</p>
+            {% endif %}
             <!-- <textarea name="userText" rows="2" cols="20" placeholder="Écrivez votre texte ici"></textarea> -->
 
-            <a class="btnUserProfile" href="#">Modifier vos règles</a>
+            <a class="btnUserProfile" href="{{ path('app_profil_editRule') }}">Modifier vos règles</a>
         </div>
 
 

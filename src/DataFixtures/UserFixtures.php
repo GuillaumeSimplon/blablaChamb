@@ -31,7 +31,7 @@ class UserFixtures extends AbstractFixtures
 
             $user = new User();
             $user->setEmail($this->faker->email());
-            $user->setPassword($this->passwordHasher->hashPassword($user, '12345678'));
+            $user->setPassword($this->passwordHasher->hashPassword($user, '123456'));
             $user->setRoles(["USER"]);
             $user->setFirstName($this->faker->firstName());
             $user->setLastName($this->faker->lastName());

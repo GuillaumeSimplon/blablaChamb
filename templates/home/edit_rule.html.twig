@@ -1,0 +1,17 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+<div class="userEdit">
+    <p class="containerTitleEdit">Modifier les règles</p>
+    
+    {{ form_start(form) }}
+    <div class="formUserEdit">{{ form_widget(form) }}</div>
+    <button class="btnEditUser" type="submit">Enregistrer les modifications</button>
+    {{ form_end(form) }}
+</div>
+{% endblock %}
+
+
+
+
+
