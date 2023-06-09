@@ -8,6 +8,8 @@ use App\Entity\User;
 use App\Entity\Rule;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Bundle\SecurityBundle\Security;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
@@ -52,11 +54,29 @@ class HomeController extends AbstractController
 
 
     #[Route('/annonces', name: 'app_annonces')]
-    public function annonces(EntityManagerInterface $entityManagerInterface): Response
+    public function annonces(EntityManagerInterface $entityManagerInterface, Request $request, Security $security): Response
     {
-
+        $user = $security->getUser();
+        
         $repository = $entityManagerInterface->getRepository(Ride::class);
         $rides = $repository->findAll();
+
+        if ($request->isMethod('POST')) {
+            $rideId = $request->request->get('ride_id');
+            $ride = $repository->find($rideId);
+
+            // Vérifiez si l'utilisateur actuel est autorisé à supprimer cette annonce
+            // if ($user !== $ride->getDriver()) {
+            //     throw $this->createAccessDeniedException('You are not allowed to delete this ride.');
+            // }
+    
+            // Supprimez l'annonce de la base de données
+            $entityManagerInterface->remove($ride);
+            $entityManagerInterface->flush();
+    
+            // Redirigez vers une page appropriée après la suppression
+            return $this->redirectToRoute('app_annonces');
+        }
 
         $repository = $entityManagerInterface->getRepository(Car::class);
         $car = $repository->findAll();
@@ -66,6 +86,7 @@ class HomeController extends AbstractController
             "logo" => 'blablaChamb',
             "rides" => $rides,
             "car" => $car,
+            "user" => $user,
         ]);
     }
 

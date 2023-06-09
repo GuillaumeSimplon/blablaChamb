@@ -2,6 +2,7 @@
 
 namespace App\Entity;
 
+use App\Entity\User;
 use App\Repository\RideRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
@@ -34,7 +35,12 @@ class Ride
     #[ORM\Column(type: Types::DATETIME_MUTABLE)]
     private ?\DateTimeInterface $created = null;
 
-    #[ORM\OneToMany(mappedBy: 'ride', targetEntity: Reservation::class)]
+
+    #[ORM\ManyToOne(inversedBy: 'rides')]
+    #[ORM\JoinColumn(nullable: false)]
+    private ?Car $car = null;
+
+    #[ORM\OneToMany(mappedBy: 'ride', targetEntity: Reservation::class, orphanRemoval: true)]
     private Collection $reservations;
 
     #[ORM\ManyToOne(inversedBy: 'rides')]
@@ -44,13 +50,9 @@ class Ride
     #[ORM\ManyToMany(targetEntity: Rule::class, inversedBy: 'rides')]
     private Collection $rules;
 
-    #[ORM\ManyToOne(inversedBy: 'rides')]
-    #[ORM\JoinColumn(nullable: false)]
-    private ?Car $car = null;
 
     #[ORM\ManyToOne(inversedBy: 'rides')]
     #[ORM\JoinColumn(nullable: false)]
-
     public function __construct()
     {
         $this->reservations = new ArrayCollection();
@@ -134,6 +136,18 @@ class Ride
         return $this;
     }
 
+    public function getCar(): ?Car
+    {
+        return $this->car;
+    }
+
+    public function setCar(?Car $car): self
+    {
+        $this->car = $car;
+
+        return $this;
+    }
+
     /**
      * @return Collection<int, Reservation>
      */
@@ -199,17 +213,4 @@ class Ride
 
         return $this;
     }
-
-    public function getCar(): ?Car
-    {
-        return $this->car;
-    }
-
-    public function setCar(?Car $car): self
-    {
-        $this->car = $car;
-
-        return $this;
-    }
-
 }

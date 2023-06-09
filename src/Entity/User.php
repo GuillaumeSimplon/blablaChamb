@@ -50,17 +50,14 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\OneToMany(mappedBy: 'passenger', targetEntity: Reservation::class)]
     private Collection $reservations;
 
-    #[ORM\OneToMany(mappedBy: 'driver', targetEntity: Ride::class)]
-    private Collection $rides;
 
-    #[ORM\OneToMany(mappedBy: 'author', targetEntity: Rule::class)]
-    private Collection $rules;
+    #[ORM\OneToMany(mappedBy: 'driver', targetEntity: Ride::class, orphanRemoval: true)]
+    private Collection $rides;
 
     public function __construct()
     {
         $this->reservations = new ArrayCollection();
         $this->rides = new ArrayCollection();
-        $this->rules = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -252,36 +249,6 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
             // set the owning side to null (unless already changed)
             if ($ride->getDriver() === $this) {
                 $ride->setDriver(null);
-            }
-        }
-
-        return $this;
-    }
-
-    /**
-     * @return Collection<int, Rule>
-     */
-    public function getRules(): Collection
-    {
-        return $this->rules;
-    }
-
-    public function addRule(Rule $rule): self
-    {
-        if (!$this->rules->contains($rule)) {
-            $this->rules->add($rule);
-            $rule->setAuthor($this);
-        }
-
-        return $this;
-    }
-
-    public function removeRule(Rule $rule): self
-    {
-        if ($this->rules->removeElement($rule)) {
-            // set the owning side to null (unless already changed)
-            if ($rule->getAuthor() === $this) {
-                $rule->setAuthor(null);
             }
         }
 

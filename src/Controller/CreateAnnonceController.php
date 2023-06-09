@@ -25,7 +25,6 @@ class CreateAnnonceController extends AbstractController
     {
         $ride = new Ride();
 
-
         $form = $this->createForm(CreateAnnonceType::class, $ride);
         $form->handleRequest($request);
 
@@ -51,6 +50,9 @@ class CreateAnnonceController extends AbstractController
             // par exemple enregistrer la nouvelle entité en base de données
         }
 
+        if ($form->isSubmitted() && $form->isValid()) {
+            return $this->redirectToRoute('app_annonces');
+        }
 
         return $this->render('home/createAnnonce.html.twig', [
             "controller_name" => 'HomeController',

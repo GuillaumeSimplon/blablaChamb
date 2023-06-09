@@ -28,7 +28,7 @@ class Car
     #[ORM\Column(type: Types::DATETIME_MUTABLE)]
     private ?\DateTimeInterface $created = null;
 
-    #[ORM\OneToOne(inversedBy: 'car', cascade: ['persist', 'remove'])]
+    #[ORM\OneToOne(inversedBy: 'car')]
     #[ORM\JoinColumn(nullable: false)]
     private ?User $owner = null;
 

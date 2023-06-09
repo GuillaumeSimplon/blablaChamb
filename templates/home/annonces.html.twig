@@ -26,15 +26,29 @@
             <p class="rideCreated">Trajet créée le : <span>{{ride.created|date('d-m-Y à H:i:s')}}</span></p>
 
             {% for rule in ride.rules %}
-            <p class="rideRule">Règle : <span>{{rule.name}}</span></p>            
+            <p class="rideRule">Règle : <span>{{rule.name}}</span></p>
             {% endfor %}
 
             <a class="reserver" href="{{ path('app_detailAnnonce', {'id': ride.id}) }}">DETAIL</a>
 
 
+
+
+            {% if user == ride.driver %}
+            <form class="editOrDeletAdContainer" action="{{ path('app_annonces') }}" method="POST"
+                onsubmit="return confirm('Êtes-vous sûr de vouloir supprimer cette annonce ?');">
+
+                <a class="editOrDeletAd" href="#">Editer</a>
+
+                <input type="hidden" name="ride_id" value="{{ ride.id }}">
+                <button class="editOrDeletAd" type="submit">Supprimer</button>
+            </form>
+            {% endif %}
+
         </div>
     </div>
     {% endfor %}
+
 </div>
 
 

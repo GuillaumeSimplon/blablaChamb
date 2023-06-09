@@ -34,6 +34,7 @@ security:
         - { path: ^/admin, roles: ROLE_ADMIN }
         - { path: ^/profil, roles: ROLE_USER }
         - { path: ^/reservation, roles: ROLE_USER }
+        - { path: ^/createAnnonce, roles: ROLE_USER }
 
 when@test:
     security:
