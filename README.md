@@ -1,9 +1,5 @@
 # EN PRIORITE !
-Récupérer votre clé API de TMDB :
-==> Créer un fichier "keyTMDB.ts" dans le dossier "./scripts"
-```ts
-export const keyTMDB = 'VOTRE CLE API ICI';
-```
+Mettre à jour le .env avec les bons mots de passe
 
 
 # Nom du Projet
